@@ -8,14 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${workspaceRoot}\\bin\\www"
+            "program": "${workspaceRoot}/app.js"
         },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "附加到端口",
-            "address": "localhost",
-            "port": 5858
-        }
+       
     ]
 }
