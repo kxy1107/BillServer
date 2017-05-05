@@ -1,3 +1,4 @@
+'use strict'
 var mysql = require('mysql'); //导入mysql Module  
   
 var pool = mysql.createPool({  
