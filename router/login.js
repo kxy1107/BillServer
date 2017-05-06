@@ -28,8 +28,8 @@ router.get('/', function (req, res) {
     let params = [UserNo, UserImg, UserName];//存储过程参数
     sql.query(proc, params, function (rows, fields) {
         console.log(rows);
-        responseData.code = rows[0][0]["Code"];
-        responseData.message = rows[0][0]["Message"];
+        responseData.Code = rows[0][0]["Code"];
+        responseData.Message = rows[0][0]["Message"];
         res.json(
             responseData
         )

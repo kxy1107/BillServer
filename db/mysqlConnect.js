@@ -2,10 +2,11 @@
 var mysql = require('mysql'); //导入mysql Module  
   
 var pool = mysql.createPool({  
-    host: 'localhost',  
-    user: 'root',  
-    password: '123456',  
-    database: 'kxytest'  
+    host: '590c46d23e11d.gz.cdb.myqcloud.com',  
+    user: 'cdb_outerroot',  
+    password: 'kxy930928',  
+    database: 'bill' ,
+    port:17649 
 });  
   
 //查询sql语句  

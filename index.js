@@ -13,8 +13,12 @@ app.get('/', function (req, res) {
    res.send('Hello World');
 })
 app.use('/login', require('./router/login'));
+app.use('/getTodayBill', require('./router/getTodayBill'));
+app.use('/getSpendWayList', require('./router/getSpendWayList'));
 app.use('/addRecordBill', require('./router/addRecordBill'));
-app.use('/getHistroyBill', require('./router/getHistroyBill'));
+app.use('/getHistoryBillList', require('./router/getHistoryBill'));
+app.use('/getBillDetailInfo', require('./router/getBillDetailInfo'));
+app.use('/delRecordBill', require('./router/delRecordBill'));
 
 
 

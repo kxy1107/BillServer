@@ -1,6 +1,5 @@
 'use strict'
 var express = require('express');
-var histroyBill = require('../model/histroyBill');
 
 var router = express.Router();
 var sql = require("../db/mysqlConnect");
@@ -20,31 +19,29 @@ router.get('/', function (req, res) {
 
 //获取前端传过来的参数
     let UserNo = req.query.UserNo;
-    let StartDate = req.query.StartDate;
-    let EndDate = req.query.EndDate;
-    let PageSize = req.query.PageSize;
-    let PageIndex = req.query.PageIndex;
+    let BillNo = req.query.BillNo;
+   
 
 //链接数据库，执行存储过程
-    let proc = "CALL PROC_GETHISTROYBILL(?,?,?,?,?)";//存储过程名称
-    let params = [UserNo, StartDate, EndDate, PageSize, PageIndex];//存储过程参数
+    let proc = "CALL PROC_GET_BILL_DETAIL_INFO(?,?)";//存储过程名称
+    let params = [UserNo,BillNo];//存储过程参数
     sql.query(proc, params, function (rows, fields) {
         console.log(rows);
-        responseData.code = rows[0][0]["Code"];
-        responseData.message = rows[0][0]["Message"];
-        histroyBill.BillList = [];
+        responseData.Code = rows[0][0]["Code"];
+        responseData.Message = rows[0][0]["Message"];
+        let billInfo = [];
         for (let key of rows[1]) {
             let list = {};
             list.UserNo = key["UserNo"];
-            list.UserName = "aaa";
             list.BillNo = key["BillNo"];
             list.BillDate = key["BillDate"];
-            list.BillMoney = key["Money"];
-            list.BillPurpose = key["Purpose"];
-            list.BillRemark = key["Remark"];
-            histroyBill.BillList.push(list);
+            list.SpendMoney = key["Money"];
+            list.Purpose = key["Purpose"];
+            list.PurposeIcon = key["PurposeIcon"];
+            list.Remark = key["Remark"];
+            billInfo.push(list);
         }
-        responseData.data = histroyBill.BillList;
+        responseData.BillInfo = billInfo;
         res.json(
             responseData
         )
