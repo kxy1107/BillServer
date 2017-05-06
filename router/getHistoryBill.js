@@ -30,14 +30,14 @@ router.get('/', function (req, res) {
         console.log(rows);
         responseData.Code = rows[0][0]["Code"];
         responseData.Message = rows[0][0]["Messagwe"];
-        responseData.TotalMoney = rows[1][0]["TotalMoney"];
+        responseData.TotalMoney = rows[1][0]["TotalMoney"] == null ? 0 : rows[1][0]["TotalMoney"];
         let histroyBill = [];
         for (let key of rows[2]) {
             let list = {};
             list.UserNo = key["UserNo"];
             list.BillNo = key["BillNo"];
             list.Date = key["BillDate"];
-            list.SpendMoney = key["Money"];
+            list.SpendMoney = key["Money"] == null ? 0 : key["Money"];
             list.Purpose = key["Purpose"];
             list.PurposeIcon = key["PurposeIcon"];
             histroyBill.push(list);
