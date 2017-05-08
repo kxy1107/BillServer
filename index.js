@@ -12,14 +12,14 @@ var http = require('http');
 app.get('/', function (req, res) {
    res.send('Hello World');
 })
-app.use('/login', require('./router/login'));
-app.use('/getTodayBill', require('./router/getTodayBill'));
-app.use('/getSpendWayList', require('./router/getSpendWayList'));
-app.use('/addRecordBill', require('./router/addRecordBill'));
-app.use('/getHistoryBillList', require('./router/getHistoryBill'));
-app.use('/getBillDetailInfo', require('./router/getBillDetailInfo'));
-app.use('/delRecordBill', require('./router/delRecordBill'));
-
+app.use('/login', require('./router/login'));//登录同步微信信息
+app.use('/getTodayBill', require('./router/getTodayBill'));//获取今天账单列表和今日消费总金额，本月消费总金额，本年消费总金额
+app.use('/getSpendWayList', require('./router/getSpendWayList'));//获取消费方式列表
+app.use('/addRecordBill', require('./router/addRecordBill'));//添加/修改消费记录
+app.use('/getHistoryBillList', require('./router/getHistoryBill'));//获取历史消费记录
+app.use('/getBillDetailInfo', require('./router/getBillDetailInfo'));//获取消费记录详情
+app.use('/delRecordBill', require('./router/delRecordBill'));//删除消费记录
+app.use('/getChartsData', require('./router/getChartsData'));//获取统计图数据
 
 
 var httpServer = http.createServer(app);
