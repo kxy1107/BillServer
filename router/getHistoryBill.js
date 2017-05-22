@@ -40,6 +40,7 @@ router.get('/', function (req, res) {
             list.SpendMoney = key["Money"] == null ? 0 : key["Money"];
             list.Purpose = key["Purpose"];
             list.PurposeIcon = key["PurposeIcon"];
+            list.Remark = key["Remark"];
             histroyBill.push(list);
         }
         responseData.HistoryBillList = histroyBill;
