@@ -3,16 +3,6 @@ var express = require('express');
 
 var router = express.Router();
 var sql = require("../db/mysqlConnect");
-var responseData;
-
-router.use(function (req, res, next) {
-
-    responseData = {
-        code: 0,
-        message: ''
-    }
-    next();
-});
 
 
 router.get('/', function (req, res) {
@@ -26,6 +16,7 @@ router.get('/', function (req, res) {
     let params = [UserNo];//存储过程参数
     sql.query(proc, params, function (rows, fields) {
         console.log(rows);
+        let responseData = {};
         responseData.Code = rows[0][0]["Code"];
         responseData.Message = rows[0][0]["Message"];
         responseData.TodayCost = rows[1][0]["TodayCost"] == null ? 0 : rows[1][0]["TodayCost"];
