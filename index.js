@@ -12,6 +12,7 @@ var http = require('http');
 app.get('/', function (req, res) {
    res.send('Hello World');
 })
+app.use('/contactMessage', require('./router/contactMessage'));//微信消息推送
 app.use('/login', require('./router/login'));//登录同步微信信息
 app.use('/getTodayBill', require('./router/getTodayBill'));//获取今天账单列表和今日消费总金额，本月消费总金额，本年消费总金额
 app.use('/getSpendWayList', require('./router/getSpendWayList'));//获取消费方式列表
